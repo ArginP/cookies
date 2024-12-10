@@ -2,3 +2,372 @@
     padding: 0;
     margin: 0;
 }
+
+@font-face {
+    font-family: 'Steppe-Book';
+    src: url("../fonts/Steppe-Book.ttf");
+}
+
+@font-face {
+    font-family: 'Steppe-ExtraBold';
+    src: url("../fonts/Steppe-ExtraBold.ttf");
+}
+
+body {
+    background-color: #5243F4;
+    font-family: 'Steppe-Book', sans-serif;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Выравнивает блок по центру страницы в зависимости от его размера*/
+}
+
+.button {
+    background-color: white;
+    border-radius: 60px;
+    width: 178px;
+    height: 58px;
+    box-sizing: border-box; /* Потому что нужно еще задать внутренние отступы от текста, чтобы кнопка была определенного размера */
+    padding: 18px; /* Отступы по краям больше, но их задавать  не нужно */
+    text-align: center; /* Лучше сделать центровкой текста */
+    font-size: 18px;
+    color: rgb(82, 67, 244);
+    border: 0; /* Чтобы браузер не добавлял рамку */
+    outline: none; /* Чтобы не появлялся фокус от браузера */
+    cursor: pointer; /* Появляется рука вместо курсора при наведении */
+}
+
+.violet-button {
+    background-color: #5243F4;
+    color: white;
+}
+
+.button:hover {
+    background-color: #eeeeee;
+}
+
+.violet-button:hover {
+    background-color: #3b2cd8;
+}
+
+.common-title {
+    font-family: 'Steppe-ExtraBold', sans-serif;
+    font-size: 60px;
+    line-height: 100%;
+    text-align: center;
+}
+
+.main { /* Убираем горизонтальную прокрутку страницы, скрываем все что вылазит за рамки */
+    position: relative;
+    overflow: hidden;
+}
+
+.currency {
+    position: fixed; /* Фиксированное положение на экране, задаваемое свойствами ниже */
+    right: 50px;
+    bottom: 50px;
+    border: 1px solid white;
+    padding: 5px 10px;
+    height: 25px;
+    min-width: 25px; /* Минимальная ширина, чтобы кнопка могла расширяться в зависимости от содержимого */
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer; /* Палец вместо курсора мышки */
+    line-height: 28px;
+    z-index: 1; /* Расположение на переднем плане, поверх остальных блоков */
+    user-select: none; /* Чтобы пользователь не мог выделять текст в кнопке */
+    transform: scale(1); /* Задаем изначальный размер в 100% */
+    animation: pulse 2s infinite; /* Ссылаемся на созданную нами анимацию */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(255,255,255,0.5);
+    }
+
+    70% {
+        transform: scale(1); /* Пульсирует, то есть меняет свой размер */
+        box-shadow: 0 0 0 10px rgba(255,255,255,0);  /* Меняет тень */
+    }
+
+    100% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(255,255,255,0);
+    }
+}
+
+.header {
+    padding: 40px 0; /* 40px - Сверху и снизу, 0 - Слева и справа */
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    vertical-align: baseline;
+}
+
+.menu {
+    margin-left: 250px; /* Отступ слева от соседнего элемента (лого) */
+}
+
+.menu-list {
+    list-style-type: none; /* Убрать точки маркированного списка */
+    display: flex; /* Расположение в строку */
+    gap: 50px; /* Зазоры между элементами */
+}
+
+.menu-item a { /* Стили для элемента "a" с классом menu-item */
+    font-size: 16px;
+    line-height: 130%;
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.menu-item a:hover {
+    border-bottom: 2px solid white;
+}
+
+.main-content {
+    padding-top: 161px;
+    padding-bottom: 200px;
+}
+
+.main-info {
+    max-width: 812px;
+}
+
+.main-title {
+    font-family: 'Steppe-ExtraBold', sans-serif;
+    font-size: 90px;
+    line-height: 100%;
+    margin-bottom: 20px;
+}
+
+.main-text {
+    max-width: 697px;
+    font-size: 18px;
+    line-height: 130%;
+    margin-bottom: 40px;
+}
+
+.main-image {
+    position: absolute; /* Чтобы картинка привязывалась не к остальным элементам, а к абсолютным значениям */
+    top: 0; /* К верху страницы */
+    right: 0; /* И к правой стороне страницы */
+    z-index: -1; /* Картинка уходит на задний план, чтобы текст был поверх нее */
+}
+
+.products {
+    padding: 100px 0; /* 100 сверху и снизу, 0 с боков */
+    position: relative; /* Чтобы картинка привязывалась не к остальным элементам, а к абсолютным значениям */
+}
+
+.products-items {
+    display: grid; /* Расположение элементов полем */
+    grid-template-columns: repeat(3, 384px); /* 3 элемента в строке, ширина элемента 384 */
+    gap: 90px 24px; /* 94 сверху и снизу, 24 с боков */
+    margin-top: 110px; /* Отступ от фона верхнего элемента до заголовка */
+}
+
+.products-item {
+    background-color: white;
+    color: #5D3427;
+}
+
+.products-item-image {
+    height: 202px; /* Высота картинки, минус расстояние на которое картинка вылезает сверху от фона */
+    text-align: center; /* Такое центрование работает и для картинки */
+}
+
+.products-item-image img {
+    height: 272px;
+    top: -70px; /* Смещение блока вверх на 70 */
+    position: relative; /* Позволяет смещать элемент предыдущим свойством */
+    max-width: 100%; /* Чтобы картинка не расширялась независимо от родительского блока */
+}
+
+.products-item-details {
+    padding: 24px;
+}
+
+.products-item-title {
+    font-family: 'Steppe-ExtraBold', sans-serif;
+    font-size: 18px;
+    margin-bottom: 20px; /* Внутренние отступы */
+}
+
+.products-item-text {
+    height: 110px; /* Высота блока, чтобы вне зависимости от количества текста размер карточек не менялся */
+    font-size: 14px;
+    line-height: 120%;
+    margin-bottom: 20px;
+}
+
+.products-item-extra {
+    display: flex; /* Гибкий контейнер, элементы будут располагаться в строчку */
+    justify-content: space-between; /* Чтобы элементы располагались привязанными к разным сторонам */
+    align-items: center;
+}
+
+.products-item-price {
+    font-family: 'Steppe-ExtraBold', sans-serif;
+    color: #5243F4;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.products-item-weight {
+    font-size: 12px;
+}
+
+.love {
+    padding: 64px 0 150px 0; /* Сверху Справа Снизу Слева (по часовой стрелке) */
+}
+
+.love-items {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.love-item {
+    width: 590px;
+    height: 453px;
+}
+
+.love-item-white {
+    background-color: white;
+    padding: 110px 80px; /* Отступы элементов до границ родительского элемента */
+    box-sizing: border-box; /* Чтобы размеры .love-item включали отступы .love-item-white */
+    color: #5D3427;
+}
+
+.love-item-title {
+    font-family: 'Steppe-ExtraBold', sans-serif;
+    font-size: 24px;
+    line-height: 110%;
+    margin-bottom: 20px; /* Отступ до соседского элемента */
+}
+
+.love-item-text {
+    font-size: 18px;
+    line-height: 130%;
+}
+
+.order {
+    padding-bottom: 102px;
+    /* background-color: rgb(82, 67, 244); по всей видимости добавил ошибочно, так как он перекрывает фон */
+    position: relative; /* Для того чтобы входящие элементы смещались относительно этого блока, а не всей страницы */
+}
+
+.order .container {
+    position: relative; /* Для того чтобы входящие элементы смещались относительно этого блока, а не всей страницы */
+}
+
+.order-block {
+    margin-top: 103px;
+    background-color: rgb(255 255 255 / 30%); /* rgba - legacy. Альфа задается через слэш, но при этом сами цвета НЕ через запятые, а через пробел*/
+    backdrop-filter: blur(50px); /* Размытие фона блюр на 50 пикселей */
+    display: flex;
+}
+
+.order-form {
+    margin-left: 200px;
+    max-width: 387px; /* Ограничение ширины формы */
+    padding: 40px 0 44px 0;
+    box-sizing: border-box;
+}
+
+.order-form-text {
+    font-family: 'Steppe-ExtraBold', sans-serif;
+    font-size: 18px;
+    line-height: 130%;
+}
+
+.order-form-inputs {
+    display: flex;
+    flex-direction: column; /* Гибкий контейнер в колонку (по вертикали) */
+    margin-top: 20px;
+}
+
+.order-form-inputs input {
+    border: 1px solid white;
+    border-radius: 60px;
+    margin-bottom: 16px;
+    padding: 24px 22px; /* Внутренние зазоры от текста до границы формы */
+    font-size: 18px;
+    width: 385px; /* Размеры формы, минус 2 пикселя (дважды по 1 пикселю от border, который находится внутри формы) */
+    height: 68px;
+    background: transparent; /* Прозрачный фон */
+    box-sizing: border-box;
+    outline: none; /* Чтобы не было подсветки от  браузера */
+    color: white;
+}
+
+::placeholder { /* Селектор текста плейсхолдера в формах */
+    color: rgb(255, 255, 255, 0.4); /* Допускается также и такая форма описания непрозрачного цвета */
+}
+
+.order-form-inputs .button.violet-button {
+    width: 387px;
+    height: 71px;
+}
+
+.order-block-image {
+    height: 501px; /* Размер блока для картинки = размер картинки - расстояние выноса картинки за границу сверху */
+    margin-left: 109px;
+}
+
+.order-image {
+    height: 559px;
+    top: -58px;
+    position: relative;
+}
+
+.order-bg-image { /* Фоновая картинка на фиксированной позиции */
+    position: absolute;
+    top: 0; /* Привязываем к верхней границе блока */
+    right: calc(100% - 810px); /* Расчет положения картинки */
+    z-index: 0; /* Располагается под блоком формы, но над фоном */
+}
+
+.footer {
+    padding: 120px 0 50px 0;
+    text-align: center;
+}
+
+.copyright {
+    margin-top: 14px;
+    font-size: 18px;
+    line-height: 130%;
+}
+
+.line1 {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: calc(100% - 960px); /* Все положения выставлены опытным путем */
+}
+
+.line2 {
+    position: absolute;
+    z-index: -1;
+    top: -40px;
+    left: 0;
+}
+
+.line3 {
+    position: absolute;
+    z-index: -1;
+    top: -920px;
+    left: 0;
+}
+
+/*  */
